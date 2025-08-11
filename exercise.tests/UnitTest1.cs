@@ -51,10 +51,11 @@ public class Tests
 
     public void TestManagerCapacityChange()
     {
-        Customer customer = new Customer();
-        Assert.That(customer.GetBasket.Count() == 3);
+        Assert.That(Basket.Capacity == 3);
         Manager manager = new Manager();
         manager.ChangeBasketCapacity(4);
-        Assert.That(customer.GetBasket.Count() == 4);
+        Assert.That(Basket.Capacity == 4);
+
+
     }
 }

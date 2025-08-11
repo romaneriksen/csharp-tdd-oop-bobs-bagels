@@ -12,6 +12,9 @@ namespace exercise.main
         { 
         }
 
-        
+        public void ChangeBasketCapacity(int newCapacity)
+        {
+            Basket.Capacity = newCapacity;
+        }
     }
 }

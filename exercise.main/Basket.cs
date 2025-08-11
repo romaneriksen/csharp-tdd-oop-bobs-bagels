@@ -9,7 +9,7 @@ namespace exercise.main
     public class Basket
     {
         private List<IProduct> _basket { get; }
-        public static int Capacity { get; set; } = 3;
+        public static int Capacity = 3;
 
         public Basket() 
         {
