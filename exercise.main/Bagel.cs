@@ -18,12 +18,15 @@ namespace exercise.main
         public double Price { get; set; }
         public string Name { get; set; }
         public string Variant { get; set; }
+
+        public int _fillingPrice;
        
         public Bagel(string variant) 
         {
             Name = "Bagel";
             Variant = variant;
             Price = _prices[variant];
+            _fillingPrice = 0;
 
         }
     }

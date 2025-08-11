@@ -30,4 +30,31 @@ public class Tests
         Assert.That(customer.GetBasket.Count() < 1);
         Assert.Pass();
     }
+
+    [Test]
+    public void TestBasketCapacity()
+    {
+        Bagel bagel1 = new Bagel("Onion");
+        Bagel bagel2 = new Bagel("Plain");
+        Bagel bagel3 = new Bagel("Everything");
+        Bagel bagel4 = new Bagel("Sesame");
+        Customer customer = new Customer();
+        customer.AddProduct(bagel1);
+        customer.AddProduct(bagel2);
+        customer.AddProduct(bagel3);
+        //customer.AddProduct(bagel4);
+        Assert.Throws<InvalidOperationException>(() => customer.AddProduct(bagel4));
+        //Assert.That();
+    }
+
+    [Test]
+
+    public void TestManagerCapacityChange()
+    {
+        Customer customer = new Customer();
+        Assert.That(customer.GetBasket.Count() == 3);
+        Manager manager = new Manager();
+        manager.ChangeBasketCapacity(4);
+        Assert.That(customer.GetBasket.Count() == 4);
+    }
 }

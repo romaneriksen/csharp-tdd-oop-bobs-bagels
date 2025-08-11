@@ -8,5 +8,10 @@ namespace exercise.main
 {
     public class Manager
     {
+        public Manager() 
+        { 
+        }
+
+        
     }
 }

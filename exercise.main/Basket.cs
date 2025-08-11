@@ -8,8 +8,8 @@ namespace exercise.main
 {
     public class Basket
     {
-        private List<IProduct>_basket { get; }
-        private static int _capacity { get; set; } = 3;
+        private List<IProduct> _basket { get; }
+        public static int Capacity { get; set; } = 3;
 
         public Basket() 
         {
@@ -18,7 +18,14 @@ namespace exercise.main
 
         public void AddProduct(IProduct product)
         {
-            _basket.Add(product);
+            if (_basket.Count() == Capacity)
+            {
+                throw new InvalidOperationException("Basket capacity full - you can not add more items");
+            }
+            else
+            {
+                _basket.Add(product);
+            }
         }
 
         public void RemoveProduct(IProduct product)
