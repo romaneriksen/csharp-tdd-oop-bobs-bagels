@@ -1,3 +1,5 @@
+using exercise.main;
+
 namespace exercise.tests;
 
 public class Tests
@@ -11,10 +13,9 @@ public class Tests
     public void TestAddBagelToBasket()
     {
         Bagel bagel = new Bagel();
-        Basket basket = new Basket();
         Customer customer = new Customer();
         customer.AddProduct(bagel);
-        Assert.That(basket.Count > 1);
+        Assert.That(customer.GetBasket.Count() > 0);
         Assert.Pass();
     }
 }

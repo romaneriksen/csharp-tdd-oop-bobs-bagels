@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace exercise.main
 {
+
     public interface IProduct
     {
-        double Price { get; set;  } 
+        //double Price { get; set;  } 
+        //string Variant { get; set; }
     }
 }
