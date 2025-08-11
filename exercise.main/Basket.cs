@@ -17,9 +17,10 @@ namespace exercise.main
         }
 
         public void AddProduct(IProduct product)
-        {   
+        {
             _basket.Add(product);
         }
+
 
         public int Count()
         {

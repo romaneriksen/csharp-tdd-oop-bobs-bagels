@@ -20,6 +20,7 @@ namespace exercise.main
             _basket.AddProduct(product);
         }
 
+
         public Basket GetBasket {  get { return _basket; } }
     }
 
