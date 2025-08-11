@@ -20,6 +20,10 @@ namespace exercise.main
             _basket.AddProduct(product);
         }
 
+        public void RemoveProduct(IProduct product)
+        {
+            _basket.RemoveProduct(product);
+        }
 
         public Basket GetBasket {  get { return _basket; } }
     }

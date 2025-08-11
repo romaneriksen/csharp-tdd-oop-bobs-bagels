@@ -21,6 +21,10 @@ namespace exercise.main
             _basket.Add(product);
         }
 
+        public void RemoveProduct(IProduct product)
+        {
+            _basket.Remove(product);
+        }
 
         public int Count()
         {
