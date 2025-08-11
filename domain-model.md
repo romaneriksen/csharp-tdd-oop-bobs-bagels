@@ -1,0 +1,8 @@
+| User stories | Classes   | Methods                                                                                                                  | Output/Function                |
+|--------------|-----------|--------------------------------------------------------------------------------------------------------------------------|--------------------------------|
+| 1,3          | Customer  | AddBagel(Bagel bagel) Include Exception handling for full basket                                                         | Add bagel to the basket        |
+| 2,5          | Customer  | RemoveBagel(Bagel bagel) Include Exception handling when an item that  does not exist in the basket is attempted removed | Remove bagel from basket       |
+| 6            | Customer  | ComputeCost(List<>)                                                                                                      |                                |
+| 4            | Manager   | ChangeCapacity(int capacity)                                                                                             | Change the capacity of baskets |
+|              | Bagel     |                                                                                                                          |                                |
+|              | Order     |                                                                                                                          |                                |
