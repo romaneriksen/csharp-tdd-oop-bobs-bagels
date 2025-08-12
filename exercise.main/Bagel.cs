@@ -8,25 +8,22 @@ namespace exercise.main
 {
     public class Bagel : IProduct
     {
-        public Dictionary<string, double> _prices = new Dictionary<string, double>()
-        {
-            {"Onion", 0.49},
-            {"Plain", 0.39},
-            {"Everything", 0.49},
-            {"Sesame", 0.49},
-        };
         public double Price { get; set; }
         public string Name { get; set; }
         public string Variant { get; set; }
 
         public int _fillingPrice;
        
-        public Bagel(string variant) 
+        public Bagel(string SKU) 
         {
-            Name = "Bagel";
-            Variant = variant;
-            Price = _prices[variant];
-            _fillingPrice = 0;
+            //Name = "Bagel";
+            //Variant = variant;
+            //Price = _prices[variant];
+            //_fillingPrice = 0;
+            var info = ProductCatalog.GetProductInfo(SKU);
+            Price = info.Price;
+            Name = info.Name;
+            Variant = info.Variant;
 
         }
     }
