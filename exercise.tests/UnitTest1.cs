@@ -91,4 +91,20 @@ public class Tests
         Assert.That(expectedBagelPrice, Is.EqualTo(bagel.Price));
     }
 
+    [Test]
+    public void TestAddFillingsToBagel()
+    {
+        Bagel bagel = new Bagel("BGLO");
+        Filling bacon = new Filling("FILB");
+        bagel.AddFilling(bacon);
+        Assert.That(bagel.fillings.Contains(bacon));
+    }
+
+    [Test]
+    public void TestFillingPrice()
+    {
+        Filling bacon = new Filling("FILB");
+        Assert.That(bacon.Price, Is.EqualTo(0.12));
+    }
+
 }
