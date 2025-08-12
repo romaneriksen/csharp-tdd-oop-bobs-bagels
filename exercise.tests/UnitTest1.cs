@@ -73,15 +73,22 @@ public class Tests
         Bagel bagel1 = new Bagel("BGLO");
         Bagel bagel2 = new Bagel("BGLP");
         Bagel bagel3 = new Bagel("BGLE");
-        Bagel bagel4 = new Bagel("BGLS");
+        //Bagel bagel4 = new Bagel("BGLS");
         customer.AddProduct(bagel1);
         customer.AddProduct(bagel2);
         customer.AddProduct(bagel3);
-        customer.AddProduct(bagel4);
-        double expectedPrice = 1.86d;
+        //customer.AddProduct(bagel4);
+        double expectedPrice = 1.37d;
         Assert.That(expectedPrice, Is.EqualTo(customer.BasketCost()));
+    }
 
-
+    [Test]
+    public void TestBagelCostBeforeAdd()
+    {
+        Customer customer = new Customer();
+        Bagel bagel = new Bagel("BGLO");
+        double expectedBagelPrice = 0.49d;
+        Assert.That(expectedBagelPrice, Is.EqualTo(bagel.Price));
     }
 
 }

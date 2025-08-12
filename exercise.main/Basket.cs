@@ -30,7 +30,7 @@ namespace exercise.main
 
         public void RemoveProduct(IProduct product)
         {
-            _basket.Remove(product);
+            //_basket.Remove(product);
             if (_basket.Contains(product))
             {
                 _basket.Remove(product);
@@ -39,6 +39,12 @@ namespace exercise.main
             {
                 throw new InvalidOperationException("Product does not exist in basket");
             }
+        }
+
+        public double ComputeCost()
+        {
+            return _basket.Sum(x => x.Price);
+
         }
 
         public int Count()

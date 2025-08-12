@@ -25,6 +25,11 @@ namespace exercise.main
             _basket.RemoveProduct(product);
         }
 
+        public double BasketCost()
+        {
+            return _basket.ComputeCost();
+        }
+
         public Basket GetBasket {  get { return _basket; } }
     }
 
