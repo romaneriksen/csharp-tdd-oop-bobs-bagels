@@ -6,33 +6,18 @@ using System.Threading.Tasks;
 
 namespace exercise.main
 {
-    public class Bagel : IProduct
+    internal class Coffee
     {
         public double Price { get; set; }
         public string Name { get; set; }
         public string Variant { get; set; }
 
-        public double _fillingPrice;
-
-        public List<Filling> fillings;
-       
-        public Bagel(string SKU) 
+        public Coffee(string SKU)
         {
-            //Name = "Bagel";
-            //Variant = variant;
-            //Price = _prices[variant];
-            //_fillingPrice = 0;
             var info = ProductCatalog.GetProductInfo(SKU);
             Price = info.Price;
             Name = info.Name;
             Variant = info.Variant;
-            fillings = new List<Filling>();
-
-        }
-
-        public void AddFilling(Filling filling)
-        {
-            fillings.Add(filling);
         }
     }
 }
