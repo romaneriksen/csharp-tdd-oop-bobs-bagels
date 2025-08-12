@@ -31,6 +31,14 @@ namespace exercise.main
         public void RemoveProduct(IProduct product)
         {
             _basket.Remove(product);
+            if (_basket.Contains(product))
+            {
+                _basket.Remove(product);
+            }
+            else
+            {
+                throw new InvalidOperationException("Product does not exist in basket");
+            }
         }
 
         public int Count()
