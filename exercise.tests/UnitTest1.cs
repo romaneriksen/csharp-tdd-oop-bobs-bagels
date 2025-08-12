@@ -66,5 +66,22 @@ public class Tests
         
     }
 
+    [Test]
+    public void TestComputeBasketCost()
+    {
+        Customer customer = new Customer();
+        Bagel bagel1 = new Bagel("BGLO");
+        Bagel bagel2 = new Bagel("BGLP");
+        Bagel bagel3 = new Bagel("BGLE");
+        Bagel bagel4 = new Bagel("BGLS");
+        customer.AddProduct(bagel1);
+        customer.AddProduct(bagel2);
+        customer.AddProduct(bagel3);
+        customer.AddProduct(bagel4);
+        double expectedPrice = 1.86d;
+        Assert.That(expectedPrice, Is.EqualTo(customer.BasketCost()));
+
+
+    }
 
 }
