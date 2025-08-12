@@ -107,4 +107,16 @@ public class Tests
         Assert.That(bacon.Price, Is.EqualTo(0.12));
     }
 
+    [Test]
+    public void TestInvalidItem()
+    {
+        //Filling bacon = new Filling("FILA");
+
+        //Bagel bagel = new Bagel("BGLZ");
+
+        Assert.Throws<KeyNotFoundException>(() => new Bagel("BGLZ"));
+        Assert.Throws<KeyNotFoundException>(() => new Filling("AAAA"));
+
+    }
+
 }
