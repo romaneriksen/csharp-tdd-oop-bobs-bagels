@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace exercise.main
 {
-    internal class Coffee
+    public class Coffee : IProduct
     {
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public string Name { get; set; }
         public string Variant { get; set; }
 

@@ -25,7 +25,7 @@ namespace exercise.main
             _basket.RemoveProduct(product);
         }
 
-        public double BasketCost()
+        public decimal BasketCost()
         {
             return _basket.ComputeCost();
         }

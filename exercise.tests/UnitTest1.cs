@@ -78,7 +78,7 @@ public class Tests
         customer.AddProduct(bagel2);
         customer.AddProduct(bagel3);
         //customer.AddProduct(bagel4);
-        double expectedPrice = 1.37d;
+        decimal expectedPrice = 1.37m;
         Assert.That(expectedPrice, Is.EqualTo(customer.BasketCost()));
     }
 
@@ -87,7 +87,7 @@ public class Tests
     {
         Customer customer = new Customer();
         Bagel bagel = new Bagel("BGLO");
-        double expectedBagelPrice = 0.49d;
+        decimal expectedBagelPrice = 0.49m;
         Assert.That(expectedBagelPrice, Is.EqualTo(bagel.Price));
     }
 
@@ -104,7 +104,7 @@ public class Tests
     public void TestFillingPrice()
     {
         Filling bacon = new Filling("FILB");
-        Assert.That(bacon.Price, Is.EqualTo(0.12));
+        Assert.That(bacon.Price, Is.EqualTo(0.12m));
     }
 
     [Test]
@@ -117,6 +117,60 @@ public class Tests
         Assert.Throws<KeyNotFoundException>(() => new Bagel("BGLZ"));
         Assert.Throws<KeyNotFoundException>(() => new Filling("AAAA"));
 
+    }
+
+    [Test]
+    public void TestSomething()
+    {
+        Customer customer = new Customer();
+        Bagel bagel = new Bagel("BGLO");
+        Filling bacon = new Filling("FILB");
+        bagel.AddFilling(bacon);
+        customer.AddProduct(bagel);
+        Assert.That(customer.BasketCost(), Is.EqualTo(0.61m));
+
+    }
+
+    [Test]
+    public void TestDiscounts()
+    {
+        Customer customer = new Customer();
+        Manager manager = new Manager();
+        manager.ChangeBasketCapacity(50);
+        for (int i = 0; i < 12; i++)
+        {
+            customer.AddProduct(new Bagel("BGLO"));
+        }
+        Assert.That(customer.BasketCost(), Is.EqualTo(3.99m));
+
+        for (int i = 0; i < 6; i++)
+        {
+            customer.AddProduct(new Bagel("BGLO"));
+        }
+        Assert.That(customer.BasketCost(), Is.EqualTo(6.48m));
+
+        Customer customer2 = new Customer();
+        for (int i = 0; i < 12; i++)
+        {
+            customer2.AddProduct(new Bagel("BGLS"));
+        }
+        customer2.AddProduct(new Bagel("BGLP"));
+        customer2.AddProduct(new Bagel("BGLP"));
+        Console.WriteLine(customer2.BasketCost());
+
+        Assert.That(customer2.BasketCost(), Is.EqualTo(4.97m));
+
+        customer2.AddProduct(new Coffee("COFB"));
+
+        Assert.That(customer2.BasketCost(), Is.EqualTo(5.73m));
+
+        for (int i = 0; i < 6; i++)
+        {
+            customer2.AddProduct(new Bagel("BGLS"));
+        }
+        Assert.That(customer2.BasketCost(), Is.EqualTo(8.22m));
+
+        manager.ChangeBasketCapacity(3);
     }
 
 }

@@ -8,25 +8,25 @@ namespace exercise.main
 {
     public static class ProductCatalog
     {
-        private static readonly Dictionary<string, (string Name, double Price, string Variant)> _products = new()
+        private static readonly Dictionary<string, (string Name, decimal Price, string Variant)> _products = new()
         {
-            { "BGLO", ("Bagel", 0.49, "Onion") },
-            { "BGLP", ("Bagel", 0.39, "Plain") },
-            { "BGLE", ("Bagel", 0.49, "Everything") },
-            { "BGLS", ("Bagel", 0.49, "Sesame") },
-            { "COFB", ("Coffee", 0.99, "Black") },
-            { "COFW", ("Coffee", 1.19, "White") },
-            { "COFC", ("Coffee", 1.29, "Capuccino") },
-            { "COFL", ("Coffee", 1.29, "Latte") },
-            { "FILB", ("Filling", 0.12, "Bacon") },
-            { "FILE", ("Filling", 0.12, "Egg") },
-            { "FILC", ("Filling", 0.12, "Cheese") },
-            { "FILX", ("Filling", 0.12, "Cream Cheese") },
-            { "FILS", ("Filling", 0.12, "Smoked Salmon") },
-            { "FILH", ("Filling", 0.12, "Ham") }
+            { "BGLO", ("Bagel", 0.49m, "Onion") },
+            { "BGLP", ("Bagel", 0.39m, "Plain") },
+            { "BGLE", ("Bagel", 0.49m, "Everything") },
+            { "BGLS", ("Bagel", 0.49m, "Sesame") },
+            { "COFB", ("Coffee", 0.99m, "Black") },
+            { "COFW", ("Coffee", 1.19m, "White") },
+            { "COFC", ("Coffee", 1.29m, "Capuccino") },
+            { "COFL", ("Coffee", 1.29m, "Latte") },
+            { "FILB", ("Filling", 0.12m, "Bacon") },
+            { "FILE", ("Filling", 0.12m, "Egg") },
+            { "FILC", ("Filling", 0.12m, "Cheese") },
+            { "FILX", ("Filling", 0.12m, "Cream Cheese") },
+            { "FILS", ("Filling", 0.12m, "Smoked Salmon") },
+            { "FILH", ("Filling", 0.12m, "Ham") }
         };
 
-        public static (string Name, double Price, string Variant) GetProductInfo(string code)
+        public static (string Name, decimal Price, string Variant) GetProductInfo(string code)
         {
             if (_products.TryGetValue(code, out var product))
             {

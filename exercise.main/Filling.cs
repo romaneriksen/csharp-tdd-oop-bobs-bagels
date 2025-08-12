@@ -8,7 +8,7 @@ namespace exercise.main
 {
     public class Filling : IProduct
     {
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public string Name { get; set; }
         public string Variant { get; set; }
 

@@ -8,13 +8,13 @@ namespace exercise.main
 {
     public class Bagel : IProduct
     {
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public string Name { get; set; }
         public string Variant { get; set; }
 
-        public double _fillingPrice;
+        public decimal _fillingPrice { get; set; } = 0;
 
-        public List<Filling> fillings;
+        public List<Filling> fillings { get; set; }
        
         public Bagel(string SKU) 
         {
@@ -33,6 +33,10 @@ namespace exercise.main
         public void AddFilling(Filling filling)
         {
             fillings.Add(filling);
+            //_fillingPrice += filling.Price;
+            Price += filling.Price;
         }
+
+        public List<Filling> GetFillings() {return fillings;}
     }
 }
