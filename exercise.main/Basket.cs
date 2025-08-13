@@ -10,6 +10,7 @@ namespace exercise.main
     public class Basket
     {
         private List<IProduct> _basket { get; }
+        private List<Filling> _bagelFillings { get; } = new List<Filling>();
         public static int Capacity = 3;
 
         public Basket() 
@@ -25,6 +26,11 @@ namespace exercise.main
             }
             else
             {
+                if (product is Bagel)
+                {
+                    Bagel bagel = (Bagel)product;
+                    bagel.GetFillings().ForEach(x => _bagelFillings.Add(x));
+                }
                 _basket.Add(product);
             }
         }
@@ -46,7 +52,7 @@ namespace exercise.main
         {
             //return _basket.Sum(x => x.Price) - this.ComputeDiscounts();
             var info = this.ComputeDiscounts();
-            decimal total = info.Discounts + info.RemainingItems.Sum(x => x.Price);
+            decimal total = info.Discounts + info.RemainingItems.Sum(x => x.Price) + _bagelFillings.Sum(x => x.Price);
             return total;
         }
 
@@ -97,6 +103,53 @@ namespace exercise.main
 
             return (discounts, remainingItems);
         }
+
+        public string GetReceipt()
+        {
+            StringBuilder sb = new StringBuilder();
+            Dictionary<string, (string Name, int count, decimal priceTotal)> productCount = new();
+            foreach (IProduct item in _basket)
+            {
+                if (productCount.ContainsKey(item.Variant))
+                {
+                    int val = productCount[item.Variant].count + 1;
+                    decimal price = productCount[item.Variant].priceTotal;
+                    productCount[item.Variant] = (item.Name, val, price+item.Price);
+                }
+                else
+                {
+                    productCount[item.Variant] = (item.Name, 1, item.Price);
+                }
+            }
+            int totalWidth = 30;
+            string title = "~~~ Bob's Bagels ~~~";
+            string time = DateTime.Now.ToString();
+            string end = "Thank you for your order!";
+
+            sb.AppendFormat("{0," + (((totalWidth - title.Length) / 2) + title.Length) + "}", title);
+            sb.AppendLine();
+            sb.AppendLine();
+            sb.AppendFormat("{0," + (((totalWidth - time.Length) / 2) + time.Length) + "}", time);
+            sb.AppendLine();
+            sb.AppendLine();
+            sb.AppendLine(new String('-', 30));
+            sb.AppendLine();
+            //sb.AppendLine();
+
+            foreach (var item in productCount)
+            {
+                sb.AppendFormat("{0,-20}{1,-5}{2,-5}", item.Key, item.Value.count, item.Value.priceTotal);
+                sb.AppendLine();    
+            }
+
+            sb.AppendLine();
+            sb.AppendLine(new String('-', 30));
+            sb.AppendLine();
+            sb.AppendFormat("{0," + (((totalWidth - end.Length) / 2) + end.Length) + "}", end);
+
+            return sb.ToString();
+        }
+
 
         public int Count()
         {

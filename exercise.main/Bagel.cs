@@ -34,9 +34,9 @@ namespace exercise.main
         {
             fillings.Add(filling);
             //_fillingPrice += filling.Price;
-            Price += filling.Price;
+            //Price += filling.Price;
         }
 
-        public List<Filling> GetFillings() {return fillings;}
+        public List<Filling> GetFillings() { return fillings; }
     }
 }

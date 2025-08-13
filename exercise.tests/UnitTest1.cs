@@ -154,23 +154,51 @@ public class Tests
         {
             customer2.AddProduct(new Bagel("BGLS"));
         }
-        customer2.AddProduct(new Bagel("BGLP"));
+        Bagel bagel = new Bagel("BGLP");
+        bagel.AddFilling(new Filling("FILB"));
+        customer2.AddProduct(bagel);
         customer2.AddProduct(new Bagel("BGLP"));
         Console.WriteLine(customer2.BasketCost());
 
-        Assert.That(customer2.BasketCost(), Is.EqualTo(4.97m));
+        Assert.That(customer2.BasketCost(), Is.EqualTo(5.09m));
 
         customer2.AddProduct(new Coffee("COFB"));
 
-        Assert.That(customer2.BasketCost(), Is.EqualTo(5.73m));
+        Assert.That(customer2.BasketCost(), Is.EqualTo(5.85m));
 
         for (int i = 0; i < 6; i++)
         {
             customer2.AddProduct(new Bagel("BGLS"));
         }
-        Assert.That(customer2.BasketCost(), Is.EqualTo(8.22m));
+        Assert.That(customer2.BasketCost(), Is.EqualTo(8.34m));
 
         manager.ChangeBasketCapacity(3);
+    }
+
+    [Test]
+    public void TestReceipt()
+    {
+        Customer customer = new Customer();
+        Manager manager = new Manager();
+        manager.ChangeBasketCapacity(50);
+        for (int i = 0; i < 2; i++)
+        {
+            customer.AddProduct(new Bagel("BGLO"));
+        }
+        for (int i = 0; i < 12; i++)
+        {
+            customer.AddProduct(new Bagel("BGLP"));
+        }
+        for (int i = 0; i < 6; i++)
+        {
+            customer.AddProduct(new Bagel("BGLE"));
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            customer.AddProduct(new Coffee("COFB"));
+        }
+
+        Console.WriteLine(customer.GetReceipt());
     }
 
 }

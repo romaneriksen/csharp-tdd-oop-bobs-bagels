@@ -30,6 +30,11 @@ namespace exercise.main
             return _basket.ComputeCost();
         }
 
+        public string GetReceipt()
+        {
+            return _basket.GetReceipt();
+        }
+
         public Basket GetBasket {  get { return _basket; } }
     }
 
